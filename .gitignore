@@ -1,0 +1,21 @@
+for x in url:
+	counter=counter+1
+	html=urlopen(x).read()
+	soup = BeautifulSoup(html)
+	links=soup.findAll('a',{"class":"print"})
+	for l in links:
+		data.append(l.get('href'))
+		for d in data:
+			talkhtml=urlopen(d).read()
+			talksoup=BeautifulSoup(talkhtml)
+			talkparse=talksoup('div',{"class":"topic"})
+			for t in talkparse:
+				talktext.append(t.text.encode('ascii', 'replace'))
+
+if counter % 2 then:
+	for x in range(1971,1972):
+		myfile=open("C:\Users\Jake\Documents\Brother Jake\Conference Webscrape\str(x) Conference.txt","a")
+		for talk in talktext:
+			myfile.write(talk)
+		myfile.close()
+	talktext=[]
